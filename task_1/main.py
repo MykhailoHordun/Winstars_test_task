@@ -10,6 +10,7 @@ from tensorflow.keras.utils import to_categorical
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
+
 # define an Interface
 class MnistClassifierInterface(ABC):
 
@@ -22,7 +23,7 @@ class MnistClassifierInterface(ABC):
         pass
 
 
-# define Random Forest model``
+# define Random Forest model
 class MnistRandomForestClassifier(MnistClassifierInterface):
     def __init__(self):
         self.model = None
@@ -83,7 +84,6 @@ class MnistCNNClassifier(MnistClassifierInterface):
         ])
     
     def train(self, x_train, y_train, epochs=5, batch_size=128, **kwargs):
-        # x_train_preprocessed = x_train.reshape
         y_train_cat = to_categorical(y_train, self.num_classes)
         
         self.model.compile(optimizer='adam', 
@@ -94,12 +94,9 @@ class MnistCNNClassifier(MnistClassifierInterface):
                        epochs=epochs, batch_size=batch_size,
                        verbose=2, **kwargs)
         
-
     def predict(self, x_test):
         pred = self.model.predict(x_test)
         return np.argmax(pred, axis=1)
-
-
 
 
 class MnistClassifier:
@@ -113,11 +110,9 @@ class MnistClassifier:
             self.model = MnistCNNClassifier()
         else:
             raise ValueError("Unknown algorithm. Choose 'rf', 'nn' or 'cnn'")
-        
     
     def train(self, x_train, y_train, **kwargs):
         self.model.train(x_train, y_train, **kwargs)
-
 
     def predict(self, x_test):
         return self.model.predict(x_test)
