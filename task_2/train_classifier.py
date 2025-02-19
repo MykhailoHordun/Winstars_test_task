@@ -60,7 +60,7 @@ def main():
     parser.add_argument("--dataset_path", default="./data/animal_classification_data/animals/animals", help="Path to the dataset")
     parser.add_argument("--labels_file", default="./data/animal_classification_data/name of the animals.txt", help="Path to the labels file")
     parser.add_argument("--img_size", type=int, default=24, help="Image size (square)")
-    parser.add_argument("--batch_size", type=int, default=2, help="Batch size for training")
+    parser.add_argument("--batch_size", type=int, default=32, help="Batch size for training")
     parser.add_argument('--epochs', type=int, default=50, help="Number of training epochs")
     parser.add_argument("--output_model", default="./animal_classification_model.h5", help="Path to save the trained model")
     args = parser.parse_args()
