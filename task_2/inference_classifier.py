@@ -6,7 +6,7 @@ def main():
     parser.add_argument("--model_path", default='./animal_classifier.h5', help="Path to the pretrained model")
     parser.add_argument("--image_path", type=str, required=True, help="Path to the image to be classified")
     parser.add_argument("--image_size", type=int, default=224, help="Image size (square)")
-    parser.add_argument("--encoder_path", type=str, required=True, help="Path to the label_encoder")
+    parser.add_argument("--encoder_path", type=str, required=True, default="./label_encoder.pkl", help="Path to the label_encoder")
     args = parser.parse_args()
 
     # Loading image classification model
